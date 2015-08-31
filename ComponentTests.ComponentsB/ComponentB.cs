@@ -1,4 +1,5 @@
-﻿using Microsoft.SqlServer.Dts.Pipeline;
+﻿using ComponentTests.Utitlities;
+using Microsoft.SqlServer.Dts.Pipeline;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,9 @@ namespace ComponentTests.ComponentsB
             while(buffer.NextRow())
             {
                 var value = buffer.GetString(0);
-                buffer.SetString(0, value.ToLower());
+                var upperCaseConverter = new UpperCaseConverter();
+
+                buffer.SetString(0, upperCaseConverter.Convert(value));
             }
         }
     }

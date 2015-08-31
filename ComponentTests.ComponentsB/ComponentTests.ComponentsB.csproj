@@ -88,6 +88,12 @@
   <ItemGroup>
     <None Include="ssdfds.snk" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ComponentTests.Utitlities\ComponentTests.Utitlities.csproj">
+      <Project>{761398d9-bc4b-4de4-86bc-aeb0fbc3db35}</Project>
+      <Name>ComponentTests.Utitlities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools\gacutil.exe" -u $(TargetName)
