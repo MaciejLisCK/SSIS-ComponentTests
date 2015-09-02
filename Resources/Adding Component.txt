@@ -1,0 +1,11 @@
+Project:
+1. add references
+2. add Resources file
+3. add Icon1 file
+4. change Icon1 to embedded type
+5. change project icon to Icon1
+Class:
+6. create class
+7. add DtsPipelineComponent attribute
+8. derive from PipelineComponent
+9. change attribute DisplayName
