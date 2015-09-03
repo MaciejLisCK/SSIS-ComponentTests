@@ -80,6 +80,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RowsToObjectComponent.cs" />
+    <Compile Include="RowsToObjectComponent1.cs" />
+    <Compile Include="SingleInputOutputComponent.cs" />
+    <Compile Include="SynchronousRowsToObjectComponent.cs" />
     <Compile Include="XmlPipelineComponent.cs" />
   </ItemGroup>
   <ItemGroup>

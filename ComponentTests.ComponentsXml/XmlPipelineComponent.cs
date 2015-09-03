@@ -60,13 +60,6 @@ namespace ComponentTests.ComponentsXml
             var inputCollection = ComponentMetaData.InputCollection[0];
             var inputColumnCollection = inputCollection.InputColumnCollection;
 
-            bool hasInputColumns = inputColumnCollection.Count > 0;
-            if (!hasInputColumns)
-            {
-                FireError(@"Control sould have at least one input column.");
-                return DTSValidationStatus.VS_ISBROKEN;
-            }
-
             var firstInputColumn = inputColumnCollection[0];
             bool isFirstInputColumnTextStream = firstInputColumn.DataType == DataType.DT_NTEXT;
             if (!isFirstInputColumnTextStream)
