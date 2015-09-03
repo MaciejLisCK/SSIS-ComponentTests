@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace ComponentTests.ComponentsXml
 {
     [DtsPipelineComponent(DisplayName = "ComponentXml1", ComponentType = ComponentType.Transform,
-        IconResource = "ComponentTests.ComponentsXml.Resources.Icon1.ico")]
+        IconResource = "ComponentTests.ComponentsXml.Resources.Icon1.ico",
+        CurrentVersion=2)]
     public class ComponentXml1 : XmlPipelineComponent<Order, Product>
     {
         public override void PerformUpgrade(int pipelineVersion)
