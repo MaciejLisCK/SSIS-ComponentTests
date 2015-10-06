@@ -76,9 +76,16 @@
   <ItemGroup>
     <Compile Include="ComponentXml2.cs" />
     <Compile Include="ComponentXml1.cs" />
+    <Compile Include="Final\FldTag.cs" />
+    <Compile Include="Final\GroupTag.cs" />
+    <Compile Include="Final\LinTag.cs" />
     <Compile Include="Final\PipelineComponentBase.cs" />
+    <Compile Include="Final\TabTag.cs" />
     <Compile Include="Final\X3WebService.cs" />
     <Compile Include="Final\X3WebServiceBase.cs" />
+    <Compile Include="Final\X3WebServiceCreateComponent.cs" />
+    <Compile Include="Final\X3WebServiceCreateRequest.cs" />
+    <Compile Include="Final\X3WebServiceCreateRequestParser.cs" />
     <Compile Include="Final\X3WebServiceListComponent.cs" />
     <Compile Include="Final\X3WebServiceReadComponent.cs" />
     <Compile Include="IDTSOutputCollection90.cs" />

@@ -24,6 +24,7 @@ namespace ComponentTests.ComponentsXml.Final
                 .ForMember(dm => dm.Length, mo => mo.MapFrom(sm => Decimal.Parse(sm.Attributes["LEN"].Value)));
 
             Mapper.CreateMap<XmlNode, X3DescriptionGroupTag>()
+                .ForMember(dm => dm.Tyb, mo => mo.MapFrom(sm => sm.Attributes["TYB"].Value))
                 .ForMember(dm => dm.Name, mo => mo.MapFrom(sm => sm.Attributes["NAM"].Value))
                 .ForMember(dm => dm.Fields, mo => mo.MapFrom(sm => sm.SelectNodes("FLD").Cast<XmlNode>()));
 
@@ -76,7 +77,7 @@ namespace ComponentTests.ComponentsXml.Final
         public override void ProcessInput(int inputID, PipelineBuffer inputBuffer)
         {
             while (inputBuffer.NextRow())
-            {
+            {   
                 var parameters = GetWebServiceParameters(inputBuffer);
 
                 var response = WebService.read(X3WebService.Context, PublicIdentifierValue, parameters);
