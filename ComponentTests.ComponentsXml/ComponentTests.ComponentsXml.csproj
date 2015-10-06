@@ -39,6 +39,10 @@
     <ApplicationIcon>Resources\Icon1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SQLServer.DTSPipelineWrap, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -60,6 +64,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -70,8 +76,16 @@
   <ItemGroup>
     <Compile Include="ComponentXml2.cs" />
     <Compile Include="ComponentXml1.cs" />
+    <Compile Include="Final\PipelineComponentBase.cs" />
+    <Compile Include="Final\X3WebService.cs" />
+    <Compile Include="Final\X3WebServiceBase.cs" />
+    <Compile Include="Final\X3WebServiceListComponent.cs" />
+    <Compile Include="Final\X3WebServiceReadComponent.cs" />
+    <Compile Include="IDTSOutputCollection90.cs" />
     <Compile Include="NewComponent.cs" />
     <Compile Include="ObjectJsonPreview.cs" />
+    <Compile Include="ObjectsToObjectsComponent.cs" />
+    <Compile Include="ObjectTransformationComponent1.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,14 +94,37 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RowsToObjectComponent.cs" />
+    <Compile Include="RowsToObjectsComponent.cs" />
     <Compile Include="RowsToObjectComponent1.cs" />
-    <Compile Include="SingleInputOutputComponent.cs" />
+    <Compile Include="BaseObjectComponent.cs" />
+    <Compile Include="Service References\X3WebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="SynchronousRowsToObjectComponent.cs" />
+    <Compile Include="X3WsReadComponent.cs" />
+    <Compile Include="X3WebServiceComponent.cs" />
+    <Compile Include="X3WebService\X3DescriptionFieldTag.cs" />
+    <Compile Include="X3WebService\X3DescriptionGroupTag.cs" />
+    <Compile Include="X3WebService\X3ListField.cs" />
+    <Compile Include="X3WebService\X3ListLine.cs" />
+    <Compile Include="X3WebService\X3ListResponseWrapper.cs" />
+    <Compile Include="X3WebService\X3MethodDescription.cs" />
+    <Compile Include="X3WebService\X3ObjectResponseWrapper.cs" />
+    <Compile Include="X3WebService\X3ResultField.cs" />
+    <Compile Include="X3WebService\X3ResultGroupTag.cs" />
+    <Compile Include="X3WebService\XmlWrapperObject.cs" />
     <Compile Include="XmlPipelineComponent.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="asdfasd.snk" />
+    <None Include="packages.config" />
+    <None Include="Service References\X3WebService\CAdxWebServiceXmlCC.wsdl" />
+    <None Include="Service References\X3WebService\ComponentTests.ComponentsXml.X3WebService.CAdxResultXml.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -103,6 +140,24 @@
       <Project>{761398d9-bc4b-4de4-86bc-aeb0fbc3db35}</Project>
       <Name>ComponentTests.Utitlities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\X3WebService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\X3WebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\X3WebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\X3WebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

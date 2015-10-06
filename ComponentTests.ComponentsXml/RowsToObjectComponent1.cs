@@ -9,7 +9,7 @@ namespace ComponentTests.ComponentsXml
 {
     [DtsPipelineComponent(DisplayName = "RowsToObjectComponent1", ComponentType = ComponentType.Transform,
         IconResource = "ComponentTests.ComponentsXml.Resources.Icon1.ico")]
-    public class RowsToObjectComponent1 : RowsToObjectComponent<Order>
+    public class RowsToObjectComponent1 : RowsToObjectsComponent<Order>
     {
         public override Order ProcessInput(PipelineBuffer buffer)
         {
@@ -20,11 +20,6 @@ namespace ComponentTests.ComponentsXml
             result.OrderCode = firstColumnValue;
 
             return result;
-        }
-
-        public override void AcquireConnections(object transaction)
-        {
-            base.AcquireConnections(transaction);
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ComponentTests.ComponentsXml
 {
-    public abstract class RowsToObjectComponent<TDestination> : BaseObjectComponent
+    public abstract class RowsToObjectsComponent<TDestination> : BaseObjectComponent
         where TDestination : class, new()
     {
         public string ObjectColumnName { get { return typeof(TDestination).ToString(); } }
@@ -27,6 +27,8 @@ namespace ComponentTests.ComponentsXml
 
             if (!HasOutputColumn(ObjectColumnName))
                 AddOutputColumn(ObjectColumnName, DataType.DT_NTEXT);
+
+            IsAsynchronous = true;
         }
 
         public override DTSValidationStatus Validate()
@@ -35,7 +37,7 @@ namespace ComponentTests.ComponentsXml
 
             if (!HasOutputColumns)
             {
-                FireError(@"Component should have at least one input column.");
+                FireError(@"Component should have at least one output column.");
                 return DTSValidationStatus.VS_ISBROKEN;
             }
 
@@ -63,14 +65,16 @@ namespace ComponentTests.ComponentsXml
             base.ProcessInput(inputID, buffer);
             while (buffer.NextRow())
             {
-                var outputColumnId = GetOutputColumnId(ObjectColumnName);
-
                 var outputObject = ProcessInput(buffer);
 
                 var outputXml = XmlSerializer.XmlSerialize(outputObject);
                 var outputBytes = Encoding.UTF8.GetBytes(outputXml);
-                buffer.AddBlobData(outputColumnId, outputBytes);
+                AsynchronousOutputBuffer.AddRow();
+                AsynchronousOutputBuffer.AddBlobData(0, outputBytes);
             }
+
+            if (buffer.EndOfRowset)
+                AsynchronousOutputBuffer.SetEndOfRowset();
         }
 
         public abstract TDestination ProcessInput(PipelineBuffer buffer);
